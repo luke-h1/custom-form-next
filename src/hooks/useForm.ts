@@ -34,7 +34,7 @@ export const useForm = <TValue extends Record<keyof TValue, any> = {}>(
 
   const handleChange =
     <S extends unknown>(key: keyof TValue, sanitiseFn?: (value: string) => S) =>
-    (e: ChangeEvent<HTMLInputElement & HTMLSelectElement>) => {
+    (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const value = sanitiseFn ? sanitiseFn(e.target.value) : e.target.value;
       setData({
         ...data,
